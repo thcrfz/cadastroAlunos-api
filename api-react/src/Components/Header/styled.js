@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AppBar } from '@material-ui/core';
 import { primaryColor } from '../../Config/colors';
-
+import { Link } from 'react-router-dom';
 
 export const Nav = styled(AppBar)`
  && {
@@ -9,13 +9,9 @@ export const Nav = styled(AppBar)`
   flex-direction: inherit;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  a {
-    display: inline-block;
-    color: #fff;
-    margin: 1em;
-    font-weight: bold;
-    justify-content: space-between;
+  max-width: 100%;
+  a{
+    margin-left: 1em;
   }
   .userStatus {
     color:#bada55;
@@ -30,35 +26,27 @@ export const Nav = styled(AppBar)`
   .userNameStatus span{
     font-weight: 700;
   }
-  .buttonsContainer{
-    display: flex;
-    max-width: 70%;
-  }
-
-  .newUser:hover{
-    color: #bada55;
-    opacity: 90%;
-  }
-  .newUser svg{
-    margin-right: 1rem;
-  }
-
-  .home:hover{
-    color: #ead65e;
-    opacity: 90%;
-  }
-  .home svg{
-    margin-right: 1rem;
-  }
-
-  .login:hover{
-    color: #b2c1d3;
-    opacity: 90%;
-  }
-  .login svg{
-    margin-right: 1rem;
-  }
-
-
  }
 `;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LinkTo = styled(Link)`
+  padding: 1em;
+  border-bottom-color: blue;
+  border: 2em blanchedalmond;
+  color: #fff;
+  transition: 1s;
+
+ :hover{
+  background: white;
+  color:${primaryColor};
+  transform: scale(1.2,1.2);
+  transition: 1s;
+ }
+`

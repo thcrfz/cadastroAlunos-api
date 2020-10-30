@@ -34,7 +34,6 @@ export default function Aluno({match}) {
       try {
         setIsLoading(true);
         const {data} = await axios.get(`/alunos/${id}`);
-        const Foto = get(data, 'Fotos[0].url', '');
         setNome(data.nome);
         setSobrenome(data.sobrenome);
         setEmail(data.email);
@@ -93,7 +92,7 @@ export default function Aluno({match}) {
         });
         toast.success('Aluno(a) editado(a) com sucesso.')
       } else {
-        const {data} = await axios.post(`/alunos`,{
+        await axios.post(`/alunos`,{
           nome,
           sobrenome,
           email,
@@ -102,7 +101,7 @@ export default function Aluno({match}) {
           altura
         });
         toast.success('Aluno(a) criado(a) com sucesso.');
-        history.push(`/aluno/${data.id}/edit`);
+        history.push(`/aluno`);
       }
       setIsLoading(false);
     }catch(err){

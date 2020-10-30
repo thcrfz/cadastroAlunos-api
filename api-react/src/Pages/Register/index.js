@@ -30,7 +30,7 @@ export default function Register() {
     if(!id) return;
     setNome(nomeStored);
     setEmail(emailStored);
-  }, []);
+  }, [emailStored, id, nomeStored]);
 
   async function handleSubmit(e){
     e.preventDefault();

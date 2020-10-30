@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Container } from './styled';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 export default function Loading({ isLoading }){
+
   if(!isLoading) return <> </>;
   return(
     <Container>
       <div></div>
-      <span>Carregando....</span>
+        <CircularProgress className="progressStyle" size={100} />
     </Container>
   );
 }

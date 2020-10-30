@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: 'http://34.95.253.107',
+  baseURL: 'https://apialuno.life',
 })

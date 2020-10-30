@@ -7,17 +7,35 @@ export const AlunoContainer = styled(Card)`
   && {
     background: ${primaryColor};
     max-width: 100%;
+    padding: 2em;
   }
 
-  section{
+  .summaryDetail{
+    justify-content: space-between;
+    padding: 1em;
+    font-weight: 600;
+    background: #506fa9;
+    box-shadow: 5px 5px 5px  rgba(1, 1, 1, 0.5);
+    color: #f6f4f1;
+    span{
+      margin-left: 2em;
+    }
+  }
+  .containerInfo{
     display: grid;
-
-  }
-  span{
-    margin: 8px;
-  }
-  .buttonGroup{
-    max-width: 20%;
+    background: ${primaryDarkColor};
+    justify-content: space-between;
+    align-items: center;
+    color: #f6f4f1;
+    border-radius: 2px;
+    box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.5);
+    font-weight: 600;
+    span{
+      margin: 8px;
+    }
+    .buttonGroup{
+      margin-top: 2em;
+    }
   }
 
 `;
@@ -30,18 +48,6 @@ export const ProfilePicture = styled.div`
   }
 `;
 
-export const ContainerInfo = styled.div`
-    display: flex;
-    justify-content: space-between;
-    background: ${primaryDarkColor};
-    align-items: center;
-    color: #f6f4f1;
-    margin: 10px;
-    padding: 1em;
-    border-radius: 5px;
-    box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.5);
-    font-weight: 600;
-`;
 export const TitleContainer = styled.div`
     display: flex;
     justify-content: space-between;

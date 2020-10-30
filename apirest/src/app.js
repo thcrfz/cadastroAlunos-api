@@ -15,9 +15,11 @@ import aluno from './routes/aluno';
 import picture from './routes/picture';
 
 const whiteList = [
-  'http://localhost:3000/',
-  'http://34.95.253.107/',
-  'http://localhost:3001'
+  'http://localhost:3000',
+  'http://34.95.158.147',
+  'https://apialuno.life',
+  'http://localhost:3001',
+  'https://apiescola.netlify.app'
 ];
 
 const corsOption = {

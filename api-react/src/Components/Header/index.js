@@ -4,14 +4,11 @@ import PersonAddRoundedIcon from '@material-ui/icons/PersonAddRounded';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 import FiberManualRecordRoundedIcon from '@material-ui/icons/FiberManualRecordRounded';
 import SettingsPowerRoundedIcon from '@material-ui/icons/SettingsPowerRounded';
-import {useSelector, useDispatch} from 'react-redux';
 
+import {useSelector, useDispatch} from 'react-redux';
 import * as actions from '../../store/modules/auth/actions';
 import history from '../../services/history';
-import { Link } from 'react-router-dom';
-import { Nav } from './styled';
-import { Container } from '@material-ui/core';
-
+import { Nav, ButtonsContainer, LinkTo } from './styled';
 
 export default function Header() {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
@@ -34,29 +31,29 @@ export default function Header() {
        </div>
        }
 
-      <div className="buttonsContainer">
-        <Link className="home" to="/">
+      <ButtonsContainer>
+        <LinkTo to="/">
           <HomeRoundedIcon/>
           Home
-        </Link>
-        <Link className="newUser" to="/register/">
+        </LinkTo>
+
+        <LinkTo className="newUser" to="/register/">
           <PersonAddRoundedIcon/>
           {id ? `Editar`:`Novo`}
-        </Link>
+        </LinkTo>
 
         {isLoggedIn ? (
-          <Link className="login" onClick={handleLogout}>
+          <LinkTo className="login" onClick={handleLogout}>
             <SettingsPowerRoundedIcon/>
             Sair
-          </Link>
+          </LinkTo>
         ) : (
-          <Link className="login" to="/login/">
+          <LinkTo className="login" to="/login/">
             <ExitToAppRoundedIcon/>
             Entrar
-          </Link>
+          </LinkTo>
         )}
-
-      </div>
+      </ButtonsContainer>
     </Nav>
   );
 }

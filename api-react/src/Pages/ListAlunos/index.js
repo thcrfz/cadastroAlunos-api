@@ -2,12 +2,14 @@ import React, {useState} from 'react';
 import { get } from 'lodash';
 import { toast } from 'react-toastify';
 import { Container } from '../../Styles/GlobalStyles';
-import {AlunoContainer, ProfilePicture, ContainerInfo, TitleContainer, EditButton, NewButton} from './styled';
+import {AlunoContainer, ProfilePicture, TitleContainer, EditButton, NewButton} from './styled';
 import axios from '../../services/axios';
 import Loading from '../../Components/Loading';
 import {useSelector } from 'react-redux';
-import {Link} from 'react-router-dom';
-
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import FaceRoundedIcon from '@material-ui/icons/FaceRounded';
@@ -24,6 +26,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 export default function ListAlunos() {
 
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+
   const [alunos, setAlunos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [openId, setOpenId] = useState(null);
@@ -79,8 +82,12 @@ export default function ListAlunos() {
         </TitleContainer>
       <AlunoContainer>
         {alunos.map((aluno, index) => (
-        <ContainerInfo key={String(aluno.id)}>
-          <section>
+        <Accordion key={String(aluno.id)}>
+
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon/> }
+            className="summaryDetail"
+          >
             <ProfilePicture>
               {get(aluno, 'Fotos[0].url', '', false ) ? (
                 <img src={aluno.Fotos[0].url} alt="" />
@@ -88,45 +95,57 @@ export default function ListAlunos() {
                 <FaceRoundedIcon size={36} />
               )}
             </ProfilePicture>
+
             <span>ID: {aluno.id}</span>
-            <span>{aluno.nome}</span>
-            <span>{aluno.email}</span>
-          </section>
-          {isLoggedIn &&
-            <ButtonGroup clasname="buttonGroup">
-              <EditButton to={`aluno/${aluno.id}/edit`}>
-                <EditRoundedIcon></EditRoundedIcon>
-              </EditButton>
-              <Button
-                onClick={()=>handleClickOpenId(aluno.id)}
-                variant="contained"
-                size="small"
-                color="secondary"
-                startIcon={<DeleteRoundedIcon/>}/>
-            </ButtonGroup>
-          }
+            <span>Nome: {aluno.nome}</span>
 
+          </AccordionSummary>
 
-          <Dialog
-            open={openId === aluno.id}
-            onClose={handleClose}
-          >
-            <DialogTitle >{"Excluir aluno"}</DialogTitle>
-              <DialogContent>
-                <DialogContentText >
-                  Tem certeza que você deseja excluir este aluno?
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleClose} variant="contained" color="primary">
-                 NÃO
-                </Button>
-                <Button onClick={e => handleDelete(e, aluno.id, index)} variant="contained" color="secondary" autoFocus>
-                  SIM
-                </Button>
-              </DialogActions>
-          </Dialog>
-        </ContainerInfo>
+            <AccordionDetails
+              className="containerInfo"
+            >
+
+              <span>{aluno.nome} {aluno.sobrenome}</span>
+              <span>{aluno.email}</span>
+              <span>Idade: {aluno.idade}</span>
+              <span>Peso: {aluno.peso}</span>
+              <span>Altura: {aluno.altura}</span>
+
+              {isLoggedIn &&
+                <ButtonGroup clasname="buttonGroup">
+                  <EditButton to={`aluno/${aluno.id}/edit`}>
+                    <EditRoundedIcon></EditRoundedIcon>
+                  </EditButton>
+                  <Button
+                    onClick={()=>handleClickOpenId(aluno.id)}
+                    variant="contained"
+                    size="small"
+                    color="secondary"
+                    startIcon={<DeleteRoundedIcon/>}/>
+                </ButtonGroup>
+              }
+              <Dialog
+                open={openId === aluno.id}
+                onClose={handleClose}
+              >
+                <DialogTitle >{"Excluir aluno"}</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText >
+                      Tem certeza que você deseja excluir este aluno?
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleClose} variant="contained" color="primary">
+                    NÃO
+                    </Button>
+                    <Button onClick={e => handleDelete(e, aluno.id, index)} variant="contained" color="secondary" autoFocus>
+                      SIM
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+            </AccordionDetails>
+
+          </Accordion>
         ))}
       </AlunoContainer>
     </Container>

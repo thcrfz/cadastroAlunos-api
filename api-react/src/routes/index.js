@@ -14,6 +14,7 @@ import Page404 from '../Pages/Page404';
 export default function Routes() {
 
   return (
+
     <Switch>
       <MyRoute exact path="/" component={ListAlunos} isClosed={false} />
       <MyRoute exact path="/aluno/:id/edit" component={Aluno} isClosed />

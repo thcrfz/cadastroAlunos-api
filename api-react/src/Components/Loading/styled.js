@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import * as colors from '../../Config/colors';
 
 export const Container = styled.div`
   position: absolute;
@@ -17,10 +18,11 @@ export const Container = styled.div`
     width: 100%;
     height: 100%;
     z-index: 1;
-    background: rgba(0,0,0,0.8)
+    background: ${colors.primaryDarkColor};
   }
 
-  span{
+  .progressStyle{
     z-index: 2;
+    color: ${colors.primaryColor};
   }
 `;

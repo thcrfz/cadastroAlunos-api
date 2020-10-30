@@ -17,7 +17,7 @@ export const ButtonGroup = styled.div`
 `
 export const BackLink = styled(Link)`
   margin-top: 1rem;
-  margin-left: 21rem;
+  margin-left: 10rem;
   font-weight: 700;
   transition: 1s;
 

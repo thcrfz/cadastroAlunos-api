@@ -15,9 +15,11 @@ var _aluno = require('./routes/aluno'); var _aluno2 = _interopRequireDefault(_al
 var _picture = require('./routes/picture'); var _picture2 = _interopRequireDefault(_picture);
 
 const whiteList = [
-  'http://localhost:3000/',
-  'http://34.95.253.107/',
-  'http://localhost:3001'
+  'http://localhost:3000',
+  'http://34.95.158.147',
+  'https://apialuno.life',
+  'http://localhost:3001',
+  'https://apiescola.netlify.app'
 ];
 
 const corsOption = {
@@ -38,7 +40,7 @@ class App {
   }
 
   middlewares() {
-    this.app.use(_cors2.default.call(void 0, ));
+    this.app.use(_cors2.default.call(void 0, corsOption));
     this.app.use(_helmet2.default.call(void 0, ));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
