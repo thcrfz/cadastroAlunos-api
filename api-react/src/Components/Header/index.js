@@ -12,7 +12,6 @@ import { Nav, ButtonsContainer, LinkTo } from './styled';
 
 export default function Header() {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
-  const id = useSelector(state => state.auth.user.id);
   const nome = useSelector(state => state.auth.user.nome);
 
   const dispatch = useDispatch();
@@ -37,10 +36,13 @@ export default function Header() {
           Home
         </LinkTo>
 
-        <LinkTo className="newUser" to="/register/">
-          <PersonAddRoundedIcon/>
-          {id ? `Editar`:`Novo`}
-        </LinkTo>
+        {isLoggedIn &&
+          <LinkTo className="newUser" to="/register/">
+            <PersonAddRoundedIcon/>
+            {'Editar usuário'}
+          </LinkTo>
+        }
+
 
         {isLoggedIn ? (
           <LinkTo className="login" onClick={handleLogout}>

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { get } from 'lodash';
 import { toast } from 'react-toastify';
 import { Container } from '../../Styles/GlobalStyles';
-import {AlunoContainer, ProfilePicture, TitleContainer, EditButton, NewButton} from './styled';
+import {AlunoContainer, ProfilePicture, TitleContainer, EditButton, NewButton, UserOffline, NewUserLink} from './styled';
 import axios from '../../services/axios';
 import Loading from '../../Components/Loading';
 import {useSelector } from 'react-redux';
@@ -21,7 +21,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import PersonAddRoundedIcon from '@material-ui/icons/PersonAddRounded';
+import {Typography} from '@material-ui/core';
 
 export default function ListAlunos() {
 
@@ -70,20 +71,21 @@ export default function ListAlunos() {
   return (
     <Container>
       <Loading isLoading={isLoading}/>
-      <TitleContainer>
-      <h1>Alunos</h1>
+
       {isLoggedIn &&
-
-        <NewButton to="/aluno">
-          <AddCircleRoundedIcon/>
-          Novo Aluno
-        </NewButton>
-      }
+        <TitleContainer>
+          <h1>Alunos</h1>
+          <NewButton to="/aluno">
+            <AddCircleRoundedIcon/>
+            Novo Aluno
+          </NewButton>
         </TitleContainer>
-      <AlunoContainer>
-        {alunos.map((aluno, index) => (
-        <Accordion key={String(aluno.id)}>
+      }
 
+      <AlunoContainer>
+
+        {isLoggedIn ? (alunos.map((aluno, index) => (
+        <Accordion key={String(aluno.id)}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon/> }
             className="summaryDetail"
@@ -146,7 +148,30 @@ export default function ListAlunos() {
             </AccordionDetails>
 
           </Accordion>
-        ))}
+        ))) : (
+          <UserOffline>
+            <Typography variant="h4">
+              Bem Vindo!!
+            </Typography>
+            <div className="paragraph">
+              <ul>
+              <li>
+                Entre na sua conta acima, para usar os recursos do site.
+              </li>
+              <li>
+                Ou cadastre-se abaixo.
+              </li>
+              </ul>
+
+            </div>
+
+            <NewUserLink to="/register/">
+              <PersonAddRoundedIcon/>
+                {'Criar conta'}
+            </NewUserLink>
+          </UserOffline>
+        )}
+
       </AlunoContainer>
     </Container>
   );
