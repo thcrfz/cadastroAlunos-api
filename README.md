@@ -62,6 +62,6 @@ Crie uma conta e depois faça o Login
 ## :heavy_check_mark: Conclusões:
 
 A aplicação reliza funções de registro de alunos, criando uma lista de alunos com seus respectivos dados,
-pode se esperar que as todas as funcionalidades de uma api, como registra, listar, editar, logar e excluir, estejam funcionando 
-perfeitamente, e todas ações incorretas são tratadas e repostada ao usuário para que possa utilizar a aplicação corretamente, a aplicação ainda pode ter 
-futuros updates, de uma forma dar todas as funcionalidades esperadas pelo o usuário.
+pode se esperar que as todas as funcionalidades de uma api, como registrar, listar, editar, logar e excluir, estejam funcionando 
+perfeitamente, e todas ações incorretas serão tratadas e repostada ao usuário para que ele possa utilizar a aplicação corretamente, e a aplicação ainda pode ter 
+futuros updates, uma forma de dar todas as funcionalidades esperadas pelo o usuário.
