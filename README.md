@@ -10,13 +10,15 @@ Confira o site no ar aqui: https://apiescola.netlify.app
 
 ## :eight_pointed_black_star: Features:
 
-A **APIREST** foi desenvolvida com **NodeJs, Sequelize, Google Cloud Platform, MYSQL(MariaDB), Docker, Nginx.**
+A **APIREST** foi desenvolvida com **NodeJs, Sequelize, Json Web tokens (JWT), Google Cloud Platform, MYSQL(MariaDB), Docker, Nginx.**
 
 * #### NodeJS:
 A framework do javascript foi utilizada para criar a estrutura **MVC (Models, Controller, Views + Middlewares)** da **APIREST**, gerenciar pacotes **(Express, Sequelize, CORS: para bloquear acesso
 a api, Helmet, Multer)** e configurar conexão com banco de dados e com o servidor.
 * #### Sequelize:
 A biblioteca foi utilizada para criar migrações, e as tabelas no banco de dados MYSQL.
+* #### JWT:
+Json web tokens foi utilizado para criar tokens para um usuário logado em uma sessão, no sistema de login.
 * #### Google Cloud Platform:
 Foi utilizada para criar um o servidor (Com sistema Ubuntu 18.04) e o DNS, para armazenar a APIREST, DOCKER, NGINX, PM2: utilizada para criar um processo da api ou seja redireciona
 a porta para a aplicação funcionar.
@@ -24,9 +26,8 @@ a porta para a aplicação funcionar.
 Onde fica armazenado o banco de dados, foi utilizado o MYSQL Workbrench para gerenciar criar a base de dados e gerenciar sua estrutura.
 * #### Docker:
 O Docker foi utilizado para criar container onde foi instalado o banco de dados MariaDB dentro do servidor, é utilizado somente dentro do servidor para conectar com o banco de dados.
-* #### Nginx:
-O nginx foi utilizado para fazer o deploy da apirest, foi configurado dentro do servidor Linux. Nele foi possível fazer com que a aplicação rodasse com um dominio, que
-está rediricionando para o ip do servidor.
+* #### Nginx + PM2:
+O nginx foi utilizado para fazer o deploy da apirest, fazendo proxy reverso com o node e gerenciar o projeto com o pm2, foi configurado dentro do servidor Linux. Nele foi possível fazer com que a aplicação rodasse com um dominio, que está rediricionando para o ip do servidor.
 
 
 * #### Veja o repositorio do backend [aqui](https://github.com/thcrfz/cadastroAlunos-api/tree/master/apirest/src).
